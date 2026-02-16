@@ -44,6 +44,7 @@ export default defineConfig(({ mode }): UserConfig => {
   }
 
   return {
+    base: '/type-stuff/', // <--- THIS IS THE MAGIC LINE
     plugins: getPlugins({ isDevelopment, useSentry: useSentry, env }),
     build: getBuildOptions({ enableSourceMaps: useSentry }),
     css: getCssOptions({ isDevelopment }),
