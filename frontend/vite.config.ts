@@ -179,10 +179,6 @@ function getBuildOptions({
     rollupOptions: {
       input: {
         main: path.resolve(__dirname, "src/index.html"), // Rename 'monkeytype' to 'main'
-        email: path.resolve(__dirname, "src/email-handler.html"),
-        privacy: path.resolve(__dirname, "src/privacy-policy.html"),
-        security: path.resolve(__dirname, "src/security-policy.html"),
-        terms: path.resolve(__dirname, "src/terms-of-service.html"),
         404: path.resolve(__dirname, "src/404.html"),
       },
       output: {
