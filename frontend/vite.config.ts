@@ -157,22 +157,6 @@ function getPlugins({
           applicationKey: "monkeytype-frontend",
         }) as Plugin)
       : null,
-    replace([
-      {
-        filter: ["src/ts/firebase.ts"],
-        replace: {
-          from: `"./constants/firebase-config.ts"`,
-          to: `"./constants/firebase-config-live.ts"`,
-        },
-      },
-      {
-        filter: ["src/email-handler.html"],
-        replace: {
-          from: `"./ts/constants/firebase-config"`,
-          to: `"./ts/constants/firebase-config-live"`,
-        },
-      },
-    ]),
     injectPreload(),
     minifyJson(),
   ];
