@@ -29,8 +29,10 @@ jobs:
         run: pnpm install --no-engine-strict
 
       - name: Build Frontend
-        # We tell Turbo to only build the frontend "app"
-        run: pnpm run build --filter=frontend
+        run: |
+          cd frontend
+          pnpm install
+          pnpm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -38,8 +40,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Monkeytype builds into the frontend/dist folder
-          path: './frontend/dist'
+          path: 'frontend/dist'
 
   deploy:
     needs: build
