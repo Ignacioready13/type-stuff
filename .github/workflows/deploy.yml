@@ -31,13 +31,11 @@ jobs:
       - name: Build Frontend
         env:
           RECAPTCHA_SITE_KEY: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-          # This tells TypeScript and Vite to ignore the "Ape" errors
-          TSC_COMPILE_ON_ERROR: "true"
-          VITE_SKIP_TYPECHECK: "true"
         run: |
           cd frontend
-          # We add '|| true' at the end as a safety net
-          pnpm run build || true
+          pnpm vite build --emptyOutDir
+          # Safety check: if dist is empty, see where the files went
+          ls -R ../dist
 
 
       - name: Setup Pages
