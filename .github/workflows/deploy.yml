@@ -33,6 +33,8 @@ jobs:
           cd frontend
           pnpm install
           pnpm run build
+	env:
+          RECAPTCHA_SITE_KEY: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" # This is a public test key
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
