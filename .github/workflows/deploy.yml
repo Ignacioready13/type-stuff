@@ -26,7 +26,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --no-engine-strict
 
       - name: Build Frontend
         # We tell Turbo to only build the frontend "app"
