@@ -28,14 +28,20 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-engine-strict
 
-      - name: Build Frontend
+      - name: Build Dependencies and Frontend
         env:
           RECAPTCHA_SITE_KEY: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
         run: |
+          # 1. Install everything across the whole repo
+          pnpm install --no-frozen-lockfile
+          
+          # 2. Build the internal packages (util, schemas, etc.)
+          # This creates the @monkeytype/util files the frontend is missing
+          pnpm run build --filter="./packages/**"
+          
+          # 3. Finally build the frontend
           cd frontend
-          pnpm vite build --emptyOutDir
-          # Safety check: if dist is empty, see where the files went
-          ls -R ../dist
+          pnpm run build
 
 
       - name: Setup Pages
