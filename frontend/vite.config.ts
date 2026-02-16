@@ -80,11 +80,7 @@ function getPlugins({
   const plugins: PluginOption[] = [
     envConfig({ isDevelopment, clientVersion, env }),
     languageHashes({ skip: isDevelopment }),
-    oxlintChecker({
-      debounceDelay: 125,
-      typeAware: true,
-      overlay: isDevelopment,
-    }),
+    // oxlintChecker is gone
     injectHTML(),
     tailwindcss(),
     solidPlugin(),
